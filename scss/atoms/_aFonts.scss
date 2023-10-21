@@ -1,0 +1,83 @@
+// ATOMS [ MISC ]  ####################################################################################################
+
+// A.1. GLOBAL STYLE --------------------------------------
+
+// A.1.1. Headings ----------
+
+h1,
+h1 *,
+.fntH1,
+.fntH1 *,
+.fnt42,
+.fnt42 * {
+  font-family: $exo;
+  font-weight: 800;
+  @include scaledFont(28, 42, 42, 30, 46, 46);
+}
+
+h2,
+h2 *,
+.fntH2,
+.fntH2 * {
+  font-family: $exo;
+  font-weight: 800;
+  @include scaledFont(24, 36, 36, 30, 36, 36);
+}
+
+h3,
+h3 *,
+.fntH3,
+.fntH3 * {
+  @include scaledFont(16, 18, 18, 20, 22, 22);
+  font-family: $exo;
+  font-weight: 800;
+}
+
+h4,
+h4 *,
+.fntH4,
+.fntH4 * {
+  @include scaledFont(16, 18, 18, 20, 22, 22);
+  font-family: $exo;
+  font-weight: 800;
+}
+
+h5,
+h5 *,
+.fntH5,
+fntH5 * {
+  @include scaledFont(16, 18, 18, 20, 22, 22);
+  font-family: $exo;
+  font-weight: 800;
+}
+
+.fnt72f,
+.fnt72f * {
+  @include font(72);
+}
+
+.fnt30f,
+.fnt30f * {
+  @include font(30);
+}
+
+.fnt18f,
+.fnt18f * {
+  @include font(18);
+}
+
+.fnt16b,
+.fnt16b * {
+  @include scaledFont(12, 16, 16, 12, 16, 16);
+}
+
+p,
+p *,
+.fnt14,
+.fnt14 * {
+  @include font(14);
+}
+
+// A.1. END -----------------------------------------------
+
+// END OF FILE ########################################################################################################
