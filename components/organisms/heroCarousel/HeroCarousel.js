@@ -9,9 +9,6 @@ export default function HeroCarousel(props) {
   if (!props) return null;
 
   const { title, carouselImages } = props;
-
-  console.log("props ", props);
-
   const customClass = null;
 
   const settings = {
