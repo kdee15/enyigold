@@ -1,74 +1,97 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { isMobile } from "react-device-detect";
 import BurgerMenu from "../burgerMenu/BurgerMenu";
+import Link from "next/dist/client/link";
 import classes from "./Nav.module.scss";
 
-export default function Nav() {
+export default function Nav(contentModule) {
   const [isActive, setIsActive] = useState();
+  const [mobileView, setMobileView] = useState();
   const handleToggle = () => setIsActive(!isActive);
+  gsap.registerPlugin(ScrollTrigger);
+  const navbarRef = useRef(null);
+
+  useEffect(() => {
+    setMobileView(isMobile);
+
+    const showNav = gsap
+      .fromTo(
+        navbarRef.current,
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          duration: 0.4,
+        }
+      )
+      .progress(1);
+    ScrollTrigger.create({
+      start: "top top",
+      end: "max",
+      onUpdate: (self) => {
+        self.direction === -1 ? showNav.play() : showNav.reverse();
+      },
+    });
+  }, []);
+
+  const { menuLinks } = contentModule.contentModule;
+  console.log("mainMenu", menuLinks);
 
   return (
-    <nav className={classes.navMain}>
-      <span onClick={handleToggle} className={classes.burgerWrapper}>
-        <BurgerMenu />
-      </span>
-      <div
-        className={`${classes.mNavMobile} ${
+    <nav className={classes.oNavMain} ref={navbarRef}>
+      <span
+        onClick={handleToggle}
+        className={`${classes.burgerWrapper} ${
           isActive ? `${classes.navOpen}` : `${classes.navClosed}`
         }`}
       >
-        <div onClick={handleToggle} className={classes.mNavBurger}>
-          <BurgerMenu handleToggle={handleToggle} isActive={isActive} />
+        <BurgerMenu />
+      </span>
+      {mobileView ? (
+        <div
+          className={`${classes.mNavMobile} ${
+            isActive ? `${classes.navOpen}` : `${classes.navClosed}`
+          }`}
+        >
+          <div onClick={handleToggle} className={classes.mNavBurger}>
+            <BurgerMenu handleToggle={handleToggle} isActive={isActive} />
+          </div>
+          <ul className={classes.mMenu}>
+            {menuLinks.map((link, index) => (
+              <li className={classes.navLink} key={index}>
+                <Link onClick={handleToggle} href={link.fields.url}>
+                  <a
+                    className={classes.aLink}
+                    target={`${link.fields.isExternal ? "_blank" : "_parent"}`}
+                  >
+                    {link.fields.label}
+                  </a>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
-        <ul className={classes.mMenu}>
-          <li className={classes.navLink}>
-            <a className={classes.aLink} href="#top" onClick={handleToggle}>
-              Home
-            </a>
-          </li>
-          <li className={classes.navLink}>
-            <a className={classes.aLink} href="#about" onClick={handleToggle}>
-              About
-            </a>
-          </li>
-          <li className={classes.navLink}>
-            <a className={classes.aLink} href="#tania" onClick={handleToggle}>
-              Tania Molteno
-            </a>
-          </li>
-          <li className={classes.navLink}>
-            <a className={classes.aLink} href="#adele" onClick={handleToggle}>
-              Adele Segers
-            </a>
-          </li>
-          <li className={classes.navLink}>
-            <a
-              className={classes.aLink}
-              href="#management"
-              onClick={handleToggle}
-            >
-              Talent Management Solutions
-            </a>
-          </li>
-          <li className={classes.navLink}>
-            <a
-              className={classes.aLink}
-              href="#consulting"
-              onClick={handleToggle}
-            >
-              Labour Consulting
-            </a>
-          </li>
-          <li className={classes.navLink}>
-            <a
-              className={classes.aLink}
-              href="#training"
-              onClick={handleToggle}
-            >
-              Training
-            </a>
-          </li>
-        </ul>
-      </div>
+      ) : (
+        <div className={`${classes.mNavDesktop}`}>
+          <ul className={classes.mMenu}>
+            {menuLinks.map((link, index) => (
+              <li className={classes.navLink} key={index}>
+                <Link href={link.fields.url}>
+                  <a
+                    className={`${classes.aLink} fnt16b`}
+                    target={`${link.fields.isExternal ? "_blank" : "_parent"}`}
+                  >
+                    {link.fields.label}
+                  </a>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </nav>
   );
 }

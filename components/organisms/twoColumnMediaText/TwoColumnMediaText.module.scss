@@ -13,9 +13,10 @@
 
   .oColImage {
     .mImage {
-      @include position(absolute, 0);
+      // @include position(absolute, 0);
       background-position: center;
       background-size: cover;
+      aspect-ratio: 1/1;
     }
   }
 

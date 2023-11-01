@@ -10,17 +10,13 @@ function TwoColumnMediaText({ contentModule }) {
       className={`${classes.oTextImageBlock} ${classes[`${customClass}`]}`}
     >
       <div className={`${classes.oContainer} container`}>
-        <div className={`${classes.oRow} row`}>
-          <div className={`${classes.oCol} col-12`}>
-            <h2 className={`${classes.aBlockTitle} fntH2`}>{title}</h2>
-          </div>
-        </div>
         <div
-          className={`${classes.oRow} row ${
+          className={`${classes.oRow} row no-gutters ${
             mediaOnLeft ? classes.left : classes.right
           }`}
         >
           <div className={`${classes.oColText} col-12 col-md-6`}>
+            <h2 className={`${classes.aBlockTitle} fntH2`}>{title}</h2>
             <div>{documentToReactComponents(copy)}</div>
           </div>
           <div className={`${classes.oColImage} col-12 col-md-6`}>
