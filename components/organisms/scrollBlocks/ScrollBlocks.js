@@ -1,17 +1,38 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { projects } from "../../../helpers/data/CONTENT_PROJECTS";
 import classes from "./ScrollBlocks.module.scss";
 
 function ScrollBlocks() {
+  const [projectsRef, setProjectsRef] = useArrayRef();
+
+  function useArrayRef() {
+    const projectsRef = useRef([]);
+    projectsRef.current = [];
+    return [projectsRef, (ref) => ref && projectsRef.current.push(ref)];
+  }
+
   gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
-    ScrollTrigger.create({
-      start: 1,
-      end: "max",
-      onLeaveBack: (self) => self.scroll(ScrollTrigger.maxScroll(window) - 2),
-      onLeave: (self) => self.scroll(2),
+    projectsRef.current.forEach((project) => {
+      const scrollImage = project.querySelector(".mProjectBackground");
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: project,
+          start: "top bottom",
+          toggleActions: "restart none none reset",
+        },
+      });
+      tl.to(
+        scrollImage,
+        {
+          duration: 2,
+          scale: 1,
+          opacity: 1,
+        },
+        "<"
+      );
     });
   }, []);
 
@@ -25,10 +46,15 @@ function ScrollBlocks() {
           <div
             className={`${classes.projectItem}`}
             key={index}
-            style={{
-              backgroundImage: `url(${project.image})`,
-            }}
+            ref={setProjectsRef}
           >
+            <div
+              className={`${classes.mColImage} mProjectBackground`}
+              style={{
+                backgroundImage: `url(${project.image})`,
+              }}
+            ></div>
+            <div className={`${classes.mColBody} mBodyText`}></div>
             <h2>{project.name}</h2>
           </div>
         ))}

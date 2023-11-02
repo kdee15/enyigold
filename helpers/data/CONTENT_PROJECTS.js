@@ -1,6 +1,6 @@
 export const projects = [
-  { name: "1", image: "/vercel.svg" },
-  { name: "2", image: "/vercel.svg" },
-  { name: "3", image: "/vercel.svg" },
-  { name: "1", image: "/vercel.svg" },
+  { name: "Something with a Title 1", image: "/images/pic001.jpg" },
+  { name: "Something with a Title 2", image: "/images/pic002.jpg" },
+  { name: "Something with a Title 3", image: "/images/pic003.jpg" },
+  { name: "Something with a Title 1", image: "/images/pic001.jpg" },
 ];
