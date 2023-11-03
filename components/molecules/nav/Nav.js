@@ -38,8 +38,6 @@ export default function Nav(contentModule) {
   }, []);
 
   const { menuLinks } = contentModule.contentModule;
-  console.log("mainMenu", menuLinks);
-
   return (
     <nav className={classes.oNavMain} ref={navbarRef}>
       <span

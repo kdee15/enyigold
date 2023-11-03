@@ -1,9 +1,12 @@
+"use client";
 import { createClient } from "contentful";
+import { useEffect } from "react";
 import Nav from "../components/molecules/nav/Nav";
 import HeroCarousel from "../components/organisms/heroCarousel/HeroCarousel";
 import TwoColumnMediaText from "../components/organisms/twoColumnMediaText/TwoColumnMediaText";
-import TextReveal from "../components/organisms/componentSimpleTitle/ComponentSimpleTitle";
+import CopyOneColumn from "../components/organisms/copyOneColumn/CopyOneColumn";
 import ScrollBlocks from "../components/organisms/scrollBlocks/ScrollBlocks";
+import HeroBanner from "../components/organisms/heroBanner/HeroBanner";
 const { C_SPACE_ID, C_DELIVERY_KEY } = require("../helpers/contentful-config");
 
 export async function getStaticProps(context) {
@@ -31,19 +34,28 @@ export async function getStaticProps(context) {
 export default function Home({ Page }) {
   const mainMenu = Page[0].fields.components[0].fields;
   const heroBanner = Page[0].fields.components[1].fields;
-  const recipeOneBlock = Page[0].fields.components[2].fields;
-  const recipeTwoBlock = Page[0].fields.components[3].fields;
+  const aboutCopy = Page[0].fields.components[2].fields;
+  const recipeOneBlock = Page[0].fields.components[3].fields;
+  const recipeTwoBlock = Page[0].fields.components[4].fields;
+
+  useEffect(() => {
+    (async () => {
+      const LocomotiveScroll = (await import("locomotive-scroll")).default;
+      const locomotiveScroll = new LocomotiveScroll();
+    })();
+  }, []);
 
   return (
     <div className="anchor" id="top">
       <Nav contentModule={mainMenu} />
-      <HeroCarousel {...heroBanner} />
-      <TextReveal />
+      <HeroBanner {...heroBanner} />
       <TwoColumnMediaText contentModule={recipeOneBlock} />
       <TwoColumnMediaText contentModule={recipeTwoBlock} />
+      {/* <HeroCarousel {...heroBanner} /> */}
+      {/* <CopyOneColumn {...aboutCopy} />
       <ScrollBlocks />
       <TwoColumnMediaText contentModule={recipeOneBlock} />
-      <TwoColumnMediaText contentModule={recipeTwoBlock} />
+      <TwoColumnMediaText contentModule={recipeTwoBlock} /> */}
     </div>
   );
 }

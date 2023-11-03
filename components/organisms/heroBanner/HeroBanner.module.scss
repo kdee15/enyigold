@@ -1,14 +1,57 @@
-// MOLECULES [ TRANSITIONS ]  #########################################################################################
-
-// IMPORTS ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// COMPONENT [ CAROUSEL ] ########################################################################################
 
 @import "scss/.base/module-index";
 
 // A. GLOBAL STYLES +++++++++++++++++++++++++++++++++++++
 
-.scrollImage {
-  opacity: 0;
-  transform: translateY(20%);
+.homeHeader {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.backgroundImage {
+  width: 100%;
+  height: 140vh;
+  position: absolute;
+  filter: brightness(60%);
+  background-color: black;
+}
+
+.backgroundImage img {
+  object-fit: cover;
+}
+
+.intro {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-top: 35vh;
+}
+
+.intro {
+  .fntH1 {
+    color: white;
+    font-size: 7vw;
+    z-index: 3;
+    text-align: center;
+    white-space: nowrap;
+  }
+}
+
+.introImage {
+  filter: brightness(70%);
+  width: 350px;
+  height: 475px;
+  position: absolute;
+}
+
+.introImage img {
+  object-fit: cover;
+  object-position: top;
 }
 
 // A. END +++++++++++++++++++++++++++++++++++++++++++++++

@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import classes from "./ComponentSimpleTitle.module.scss";
+import classes from "./CopyOneColumn.module.scss";
 
-function TextReveal() {
+function CopyOneColumn(props) {
+  const { title, copy } = props;
   const [lettersRef, setLettersRef] = useArrayRef();
   const triggerRef = useRef(null);
 
@@ -14,8 +15,7 @@ function TextReveal() {
   }
 
   gsap.registerPlugin(ScrollTrigger);
-  const text =
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae sit numquam placeat minima laboriosam deleniti ad necessitatibus? Ratione possimus vero mollitia ullam adipisci cumque, aut laboriosam omnis, excepturi minus atque.";
+  const text = copy;
 
   useEffect(() => {
     const reveal = gsap.to(lettersRef.current, {
@@ -51,4 +51,4 @@ function TextReveal() {
   );
 }
 
-export default TextReveal;
+export default CopyOneColumn;
