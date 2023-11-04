@@ -15,10 +15,13 @@
 
 .backgroundImage {
   width: 100%;
-  height: 140vh;
+  height: 100vh;
+  top: 50%;
+  transform: translateY(-50%);
   position: absolute;
   filter: brightness(60%);
   background-color: black;
+  z-index: 1;
 }
 
 .backgroundImage img {
@@ -30,6 +33,7 @@
   justify-content: center;
   position: relative;
   margin-top: 35vh;
+  z-index: 2;
 }
 
 .intro {
@@ -52,6 +56,11 @@
 .introImage img {
   object-fit: cover;
   object-position: top;
+}
+
+.aBlockBackground {
+  @include position(absolute, 0);
+  z-index: 0;
 }
 
 // A. END +++++++++++++++++++++++++++++++++++++++++++++++

@@ -68,6 +68,12 @@ export default function HeroBanner(props) {
           {title}
         </h1>
       </div>
+      <figure
+        className={classes.aBlockBackground}
+        style={{
+          backgroundImage: `url(${carouselImages[2].fields.image.fields.file.url})`,
+        }}
+      ></figure>
     </div>
   );
 }
