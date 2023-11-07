@@ -39,22 +39,22 @@
 .intro {
   .fntH1 {
     color: white;
-    font-size: 7vw;
     z-index: 3;
     text-align: center;
     white-space: nowrap;
+    transform: translateY(-10%);
   }
 }
 
-.introImage {
-  filter: brightness(70%);
+.logoImage {
+  filter: brightness(110%);
   width: 350px;
   height: 475px;
   position: absolute;
 }
 
-.introImage img {
-  object-fit: cover;
+.logoImage img {
+  object-fit: contain;
   object-position: top;
 }
 
