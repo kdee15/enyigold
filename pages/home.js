@@ -49,10 +49,11 @@ export default function Home({ Page }) {
     <div className="anchor" id="top">
       <Nav contentModule={mainMenu} />
       <HeroBanner {...heroBanner} />
+      <CopyOneColumn {...aboutCopy} />
       <TwoColumnMediaText contentModule={recipeOneBlock} />
       <TwoColumnMediaText contentModule={recipeTwoBlock} />
       {/* <HeroCarousel {...heroBanner} /> */}
-      {/* <CopyOneColumn {...aboutCopy} />
+      {/* 
       <ScrollBlocks />
       <TwoColumnMediaText contentModule={recipeOneBlock} />
       <TwoColumnMediaText contentModule={recipeTwoBlock} /> */}

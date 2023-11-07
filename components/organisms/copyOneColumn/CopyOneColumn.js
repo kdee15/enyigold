@@ -1,54 +1,61 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useLayoutEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import classes from "./CopyOneColumn.module.scss";
 
-function CopyOneColumn(props) {
+export default function CopyOneColumn(props) {
+  gsap.registerPlugin(ScrollTrigger);
   const { title, copy } = props;
-  const [lettersRef, setLettersRef] = useArrayRef();
-  const triggerRef = useRef(null);
+  const phrases = [`${title}`];
+  const bodyCopy = useRef(null);
 
-  function useArrayRef() {
-    const lettersRef = useRef([]);
-    lettersRef.current = [];
-    return [lettersRef, (ref) => ref && lettersRef.current.push(ref)];
+  function AnimatedText({ children }) {
+    const text = useRef(null);
+    useLayoutEffect(() => {
+      gsap.from(text.current, {
+        scrollTrigger: {
+          trigger: text.current,
+          scrub: true,
+          start: "0px bottom",
+          end: "bottom+=400px bottom",
+        },
+        opacity: 0,
+        left: "-5%",
+        ease: "power3.Out",
+      });
+    }, []);
+    return <span ref={text}>{children}</span>;
   }
 
-  gsap.registerPlugin(ScrollTrigger);
-  const text = copy;
-
-  useEffect(() => {
-    const reveal = gsap.to(lettersRef.current, {
+  useLayoutEffect(() => {
+    gsap.from(bodyCopy.current, {
       scrollTrigger: {
-        trigger: triggerRef.current,
+        trigger: bodyCopy.current,
         scrub: true,
-        start: "top center",
-        end: "bottom 80%",
+        start: "0px bottom",
+        end: "bottom+=500px bottom",
       },
-      color: "white",
-      duration: 5,
-      stagger: 1,
+      opacity: 0,
+      left: "-2%",
+      ease: "power3.Out",
     });
-    return () => {
-      reveal.kill();
-    };
   }, []);
 
   return (
-    <section className={`${classes.reveal} reveal`}>
-      <div ref={triggerRef}>
-        {text.split("").map((letter, index) => (
-          <span
-            className={`${classes.revealText} reveal-text`}
-            key={index}
-            ref={setLettersRef}
-          >
-            {letter}
-          </span>
-        ))}
+    <section className={`${classes.oCopyBlock}`}>
+      <div className={`${classes.oContainer} container`}>
+        <div className={`${classes.oRow} row`}>
+          <h2 className={`${classes.aTitle}`}>
+            {phrases.map((phrase, index) => {
+              return <AnimatedText key={index}>{phrase}</AnimatedText>;
+            })}
+          </h2>
+          <div className={`${classes.mBodyCopy} mBodyCopy`} ref={bodyCopy}>
+            {documentToReactComponents(copy)}
+          </div>
+        </div>
       </div>
     </section>
   );
 }
-
-export default CopyOneColumn;
