@@ -51,7 +51,7 @@ export default function CopyOneColumn(props) {
         start: "0px bottom",
         end: "bottom+=500px bottom",
       },
-      opacity: 0.9,
+      opacity: 0.8,
       backgroundColor: "#14452F",
     });
   }, []);
