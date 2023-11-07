@@ -6,7 +6,7 @@ import classes from "./CopyOneColumn.module.scss";
 
 export default function CopyOneColumn(props) {
   gsap.registerPlugin(ScrollTrigger);
-  const { title, copy, customClass } = props;
+  const { title, copy, image, customClass } = props;
   const phrases = [`${title}`];
   const bodyCopy = useRef(null);
   const divTrim = useRef(null);
@@ -51,31 +51,39 @@ export default function CopyOneColumn(props) {
         start: "0px bottom",
         end: "bottom+=500px bottom",
       },
-      opacity: 1,
+      opacity: 0.9,
       backgroundColor: "#14452F",
     });
   }, []);
 
   return (
-    <section
-      className={`${classes.oCopyBlock} ${classes[customClass]}`}
-      ref={divTrim}
-    >
+    <section className={`${classes.oCopyBlock} ${classes[customClass]}`}>
       <div className={`${classes.oContainer} container`}>
         <div className={`${classes.oRow} row`}>
-          <h2 className={`${classes.aTitle} fntH2`}>
-            {phrases.map((phrase, index) => {
-              return <AnimatedText key={index}>{phrase}</AnimatedText>;
-            })}
-          </h2>
-          <div
-            className={`${classes.mBodyCopy} mBodyCopy fnt16`}
-            ref={bodyCopy}
-          >
-            {documentToReactComponents(copy)}
+          <div className={`${classes.oColBody} col-12`}>
+            <h2 className={`${classes.aTitle} fntH2`}>
+              {phrases.map((phrase, index) => {
+                return <AnimatedText key={index}>{phrase}</AnimatedText>;
+              })}
+            </h2>
+            <div
+              className={`${classes.mBodyCopy} mBodyCopy fnt16`}
+              ref={bodyCopy}
+            >
+              {documentToReactComponents(copy)}
+            </div>
           </div>
         </div>
       </div>
+      <div className={`${classes.aBackgroundColor}`} ref={divTrim}></div>
+      {image ? (
+        <figure
+          className={`${classes.aBackgroundImage}`}
+          style={{
+            backgroundImage: `url(http:${image.fields.file.url})`,
+          }}
+        ></figure>
+      ) : null}
     </section>
   );
 }
