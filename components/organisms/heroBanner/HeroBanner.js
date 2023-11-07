@@ -1,5 +1,5 @@
 "use client";
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -7,7 +7,6 @@ import Slider from "react-slick";
 import classes from "./HeroBanner.module.scss";
 
 export default function HeroBanner(props) {
-  console.log("poops", props);
   /**
    * return null needed for react render func
    */
@@ -17,7 +16,7 @@ export default function HeroBanner(props) {
   const logoImage = useRef(null);
   const siteTitle = useRef(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
     const timeline = gsap.timeline({
