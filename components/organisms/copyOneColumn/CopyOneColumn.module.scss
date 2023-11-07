@@ -24,6 +24,24 @@
   }
 }
 
+.aBackgroundColor {
+  @include position(absolute, 0);
+  z-index: -0;
+}
+
+.oContainer {
+  position: relative;
+  z-index: 1;
+}
+
+.aBackgroundImage {
+  @include position(absolute, 0);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
 .aTitle {
   margin: 0 0 50px;
   span {
