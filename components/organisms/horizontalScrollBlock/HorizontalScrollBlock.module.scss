@@ -29,11 +29,16 @@
   height: 100vh;
   width: 600vw;
   position: relative;
+  display: flex;
+  flex-direction: row;
 }
 
 .scrollSection {
   height: 100vh;
   width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .oIntroBlock {
@@ -90,18 +95,6 @@
 // D. MIN-WIDTH: 992px ++++++++++++++++++++++++++++++++++
 
 @media ($md-up) {
-  .scrollSectionInner {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-  }
-
-  .scrollSection {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   .oCard {
     padding: 0;
     .mBody {
