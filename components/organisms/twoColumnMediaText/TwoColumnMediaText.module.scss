@@ -8,12 +8,8 @@
   padding: 0;
   position: relative;
 
-  .aBlockTitle {
-  }
-
   .oColImage {
     .mImage {
-      // @include position(absolute, 0);
       background-position: center;
       background-size: cover;
       aspect-ratio: 1/1;

@@ -6,7 +6,7 @@ import classes from "./CopyOneColumn.module.scss";
 
 export default function CopyOneColumn(props) {
   gsap.registerPlugin(ScrollTrigger);
-  const { title, copy, image, customClass } = props;
+  const { title, copy, image, backgroundColor, customClass } = props;
   const phrases = [`${title}`];
   const bodyCopy = useRef(null);
   const divTrim = useRef(null);
@@ -52,7 +52,7 @@ export default function CopyOneColumn(props) {
         end: "bottom+=500px bottom",
       },
       opacity: 0.8,
-      backgroundColor: "#14452F",
+      backgroundColor: backgroundColor,
     });
   }, []);
 

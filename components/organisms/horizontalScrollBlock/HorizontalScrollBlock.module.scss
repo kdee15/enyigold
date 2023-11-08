@@ -1,0 +1,126 @@
+// MOLECULE [ NAVIGATION ] ############################################################################################
+
+@import "scss/.base/module-index";
+
+// A. GLOBAL STYLES +++++++++++++++++++++++++++++++++++++
+
+.oHorizontalScroll {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-blend-mode: darken;
+  &:after {
+    content: "";
+    @include position(absolute, 0);
+    background-color: rgba($green, 0.9);
+    z-index: 0;
+  }
+  .blockWrapper {
+    z-index: 1;
+  }
+}
+
+.scrollSectionOuter {
+  overflow: hidden;
+}
+
+.scrollSectionInner {
+  height: 100vh;
+  width: 600vw;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.scrollSection {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.oIntroBlock {
+  text-align: left;
+  .aTitle {
+    margin-left: 5%;
+    max-width: 80%;
+  }
+}
+
+.aTitle {
+  color: white;
+}
+
+.oCard {
+  padding: 50px 20px;
+  .mBody {
+    height: 50vh;
+    z-index: 1;
+    .aTitle {
+      white-space: nowrap;
+      text-shadow: 0 0 10px black;
+      margin-bottom: 50px;
+    }
+    .mCopy {
+      color: white;
+    }
+  }
+  .mImage {
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    z-index: 0;
+    min-width: 55vw;
+  }
+}
+
+// A. END +++++++++++++++++++++++++++++++++++++++++++++++
+
+// B. GRACEFUL DEGRADATION ++++++++++++++++++++++++++++++
+
+@media ($md-dn) {
+}
+
+// B. END +++++++++++++++++++++++++++++++++++++++++++++++
+
+// C. MIN-WIDTH: 768px ++++++++++++++++++++++++++++++++++
+
+@media ($md-up) {
+}
+
+// C. END +++++++++++++++++++++++++++++++++++++++++++++++
+
+// D. MIN-WIDTH: 992px ++++++++++++++++++++++++++++++++++
+
+@media ($md-up) {
+  .oCard {
+    padding: 0;
+    .mBody {
+      height: auto;
+      padding: 0 0 0 50px;
+      margin-right: -33%;
+      .aTitle {
+        white-space: nowrap;
+        margin: 0;
+      }
+      .mCopy {
+        margin-left: 5%;
+      }
+    }
+    .mImage {
+    }
+  }
+}
+
+// D. END +++++++++++++++++++++++++++++++++++++++++++++++
+
+// E. MIN-WIDTH: 1200px +++++++++++++++++++++++++++++++++
+
+@media ($lg-up) {
+}
+
+// E. END +++++++++++++++++++++++++++++++++++++++++++++++
+
+// END OF FILE ########################################################################################################

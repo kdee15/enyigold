@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { projects } from "../../../helpers/data/CONTENT_PROJECTS";
 import classes from "./ScrollBlocks.module.scss";
 
 function ScrollBlocks() {
@@ -15,11 +14,11 @@ function ScrollBlocks() {
 
   gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
-    scrollRef.current.forEach((project) => {
-      const scrollImage = project.querySelector(".scrollImage");
+    scrollRef.current.forEach((recipe) => {
+      const scrollImage = recipe.querySelector(".scrollImage");
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: project,
+          trigger: recipe,
           start: "top bottom",
           toggleActions: "restart none none reset",
         },
@@ -42,7 +41,7 @@ function ScrollBlocks() {
         <div>bloashfskj sf sf g fsdg fd</div>
       </div>
       <div className={`${classes.projectBlock}`}>
-        {projects.map((project, index) => (
+        {recipes.map((recipe, index) => (
           <div
             className={`${classes.projectItem}`}
             key={index}
@@ -51,11 +50,11 @@ function ScrollBlocks() {
             <div
               className={`${classes.mColImage} scrollImage`}
               style={{
-                backgroundImage: `url(${project.image})`,
+                backgroundImage: `url(${recipe.image})`,
               }}
             ></div>
             <div className={`${classes.mColBody} mBodyText`}></div>
-            <h2>{project.name}</h2>
+            <h2>{recipe.name}</h2>
           </div>
         ))}
       </div>
