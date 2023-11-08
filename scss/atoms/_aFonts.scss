@@ -51,6 +51,11 @@ fntH5 * {
   font-weight: 800;
 }
 
+.fnt120,
+.fnt120 * {
+  @include scaledFont(24, 120, 120, 24, 120, 120);
+}
+
 .fnt72f,
 .fnt72f * {
   @include font(72);
@@ -59,6 +64,11 @@ fntH5 * {
 .fnt30f,
 .fnt30f * {
   @include font(30);
+}
+
+.fnt28,
+.fnt28 * {
+  @include scaledFont(18, 28, 28, 24, 32, 32);
 }
 
 .fnt18f,
