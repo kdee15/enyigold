@@ -24,6 +24,7 @@ function ComponentDrinks(contentModule) {
           trigger: project,
           start: "top bottom",
           toggleActions: "restart none none reset",
+          scrub: true,
         },
       });
       tl.to(
@@ -71,6 +72,7 @@ function ComponentDrinks(contentModule) {
                   height={
                     recipe.fields.images[0].fields.file.details.image.height
                   }
+                  layout="responsive"
                   alt="project image"
                   priority={true}
                   className={`${classes.aImage} scrollImage`}
