@@ -4,6 +4,53 @@
 
 // A. GLOBAL STYLES +++++++++++++++++++++++++++++++++++++
 
+.oCard {
+  background-color: white;
+  &.imageLeft {
+    .oColImage {
+      order: 1;
+    }
+    .oColBody {
+      order: 2;
+    }
+  }
+  &.imageRight {
+    .oColImage {
+      order: 2;
+    }
+    .oColBody {
+      order: 1;
+    }
+  }
+  .mBodyWrapper {
+    padding: 50px;
+    h2 {
+      margin: 0 0 20px;
+      color: $gold;
+    }
+    .mBodyCopy {
+      h3 {
+        margin: 10px auto;
+        color: $grey6A;
+      }
+      hr {
+        margin: 50px auto;
+        border: 0;
+        border-bottom: 2px solid $gold;
+      }
+    }
+  }
+  .mImage {
+    aspect-ratio: 1/1;
+    position: relative;
+    overflow: hidden;
+    .aImage {
+      transform: scale(1.1);
+      opacity: 0;
+    }
+  }
+}
+
 // A. END +++++++++++++++++++++++++++++++++++++++++++++++
 
 // B. GRACEFUL DEGRADATION ++++++++++++++++++++++++++++++
