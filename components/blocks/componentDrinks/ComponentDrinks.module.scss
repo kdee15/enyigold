@@ -6,22 +6,6 @@
 
 .oCard {
   background-color: white;
-  &.imageLeft {
-    .oColImage {
-      order: 1;
-    }
-    .oColBody {
-      order: 2;
-    }
-  }
-  &.imageRight {
-    .oColImage {
-      order: 2;
-    }
-    .oColBody {
-      order: 1;
-    }
-  }
   .mBodyWrapper {
     padding: 50px;
     h2 {
@@ -63,6 +47,24 @@
 // C. MIN-WIDTH: 768px ++++++++++++++++++++++++++++++++++
 
 @media ($md-up) {
+  .oCard {
+    &.imageLeft {
+      .oColImage {
+        order: 1;
+      }
+      .oColBody {
+        order: 2;
+      }
+    }
+    &.imageRight {
+      .oColImage {
+        order: 2;
+      }
+      .oColBody {
+        order: 1;
+      }
+    }
+  }
 }
 
 // C. END +++++++++++++++++++++++++++++++++++++++++++++++
