@@ -47,20 +47,22 @@ function ComponentDrinks(contentModule) {
       <div className={`${classes.oContainer} container`}>
         {recipes.map((recipe, index) => (
           <div
-            className={`${classes.oRow} row oCard`}
+            className={`${classes.oCard} ${
+              classes[recipe.fields.customClass]
+            } row no-gutters oCard`}
             key={index}
             ref={setScrollRef}
           >
             <div className={`${classes.oColBody} col-12 col-md-6`}>
-              <div>
+              <div className={`${classes.mBodyWrapper}`}>
                 <h2>{recipe.fields.title}</h2>
-                <div className={`${classes.mBodyCopy} fnt16`}>
+                <div className={`${classes.mBodyCopy}`}>
                   {documentToReactComponents(recipe.fields.copy)}
                 </div>
               </div>
             </div>
             <div className={`${classes.oColImage} col-12 col-md-6`}>
-              <figure className={`${classes.mImage} scrollImage`}>
+              <figure className={`${classes.mImage}`}>
                 <Image
                   src={recipe.fields.images[0].fields.file.url}
                   width={
@@ -71,7 +73,7 @@ function ComponentDrinks(contentModule) {
                   }
                   alt="project image"
                   priority={true}
-                  className={`${classes.aImage} `}
+                  className={`${classes.aImage} scrollImage`}
                 />
               </figure>
             </div>

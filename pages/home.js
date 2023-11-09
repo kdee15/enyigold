@@ -2,10 +2,7 @@
 import { createClient } from "contentful";
 import { useEffect } from "react";
 import Nav from "../components/molecules/nav/Nav";
-import HeroCarousel from "../components/organisms/heroCarousel/HeroCarousel";
-import TwoColumnMediaText from "../components/organisms/twoColumnMediaText/TwoColumnMediaText";
 import CopyOneColumn from "../components/organisms/copyOneColumn/CopyOneColumn";
-import ScrollBlocks from "../components/organisms/scrollBlocks/ScrollBlocks";
 import HeroBanner from "../components/organisms/heroBanner/HeroBanner";
 import ComponentDrinks from "../components/blocks/componentDrinks/ComponentDrinks";
 import HorizontalScrollBlock from "../components/organisms/horizontalScrollBlock/HorizontalScrollBlock";
@@ -39,9 +36,7 @@ export default function Home({ Page }) {
   const aboutCopy = Page[0].fields.components[2].fields;
   const flavourCopy = Page[0].fields.components[3].fields;
   const founders = Page[0].fields.components[4].fields;
-  const recipeOneBlock = Page[0].fields.components[5].fields;
-  const recipeTwoBlock = Page[0].fields.components[6].fields;
-  const drinksBlock = Page[0].fields.components[7].fields;
+  const drinksBlock = Page[0].fields.components[5].fields;
 
   useEffect(() => {
     (async () => {
@@ -57,8 +52,6 @@ export default function Home({ Page }) {
       <CopyOneColumn {...aboutCopy} />
       <CopyOneColumn {...flavourCopy} />
       <HorizontalScrollBlock {...founders} />
-      <TwoColumnMediaText contentModule={recipeOneBlock} />
-      <TwoColumnMediaText contentModule={recipeTwoBlock} />
       <ComponentDrinks contentModule={drinksBlock} />
     </div>
   );
