@@ -55,9 +55,13 @@
 
 .oCard {
   padding: 50px 20px;
+  position: relative;
   .mBody {
-    height: 50vh;
     z-index: 1;
+    background-color: rgba($grey1D, 0.6);
+    padding: 50px;
+    border-radius: 30px;
+    margin-top: 20vh;
     .aTitle {
       white-space: nowrap;
       text-shadow: 0 0 10px black;
@@ -67,13 +71,19 @@
       color: white;
     }
   }
-  .mImage {
+  .mImageDesk {
     display: block;
     margin: 0 auto;
     position: relative;
     z-index: 0;
     min-width: 55vw;
   }
+}
+
+.mImageMobile {
+  @include position(absolute, 0);
+  background-size: cover;
+  background-position: center;
 }
 
 // A. END +++++++++++++++++++++++++++++++++++++++++++++++
@@ -99,8 +109,10 @@
     padding: 0;
     .mBody {
       height: auto;
-      padding: 0 0 0 50px;
+      padding: 50px;
       margin-right: -33%;
+      border-radius: 15px;
+      margin-top: 0;
       .aTitle {
         white-space: nowrap;
         margin: 0;

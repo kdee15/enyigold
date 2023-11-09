@@ -1,17 +1,20 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Image from "next/image";
+import { isMobile } from "react-device-detect";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import classes from "./HorizontalScrollBlock.module.scss";
 
 function HorizontalScrollBlock(props) {
   const sectionRef = useRef(null);
   const triggerRef = useRef(null);
+  const [mobileView, setMobileView] = useState();
 
   gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
+    setMobileView(isMobile);
     const pin = gsap.fromTo(
       sectionRef.current,
       {
@@ -38,7 +41,7 @@ function HorizontalScrollBlock(props) {
     };
   }, []);
 
-  const { title, backgroundImage, cardList } = props;
+  const { title, introText, backgroundImage, cardList } = props;
 
   console.log("props", props);
 
@@ -62,7 +65,9 @@ function HorizontalScrollBlock(props) {
           <div
             className={`${classes.scrollSection} ${classes.oIntroBlock} scroll-section`}
           >
-            <h3 className={`${classes.aTitle} fnt120`}>{title}</h3>
+            <h3 className={`${classes.aTitle} fnt120`}>
+              {documentToReactComponents(introText)}
+            </h3>
           </div>
           {cardList.map((card, index) => {
             return (
@@ -78,16 +83,27 @@ function HorizontalScrollBlock(props) {
                     {documentToReactComponents(card.fields.copy)}
                   </div>
                 </div>
-                <figure className={`${classes.mImage}`}>
-                  <Image
-                    src={card.fields.image.fields.file.url}
-                    width={card.fields.image.fields.file.details.image.width}
-                    height={card.fields.image.fields.file.details.image.height}
-                    alt="founder image"
-                    priority={true}
-                    layout="responsive"
-                  />
-                </figure>
+                {mobileView ? (
+                  <figure
+                    className={`${classes.mImageMobile}`}
+                    style={{
+                      backgroundImage: `url(${card.fields.imageMobile.fields.file.url})`,
+                    }}
+                  ></figure>
+                ) : (
+                  <figure className={`${classes.mImageDesk}`}>
+                    <Image
+                      src={card.fields.image.fields.file.url}
+                      width={card.fields.image.fields.file.details.image.width}
+                      height={
+                        card.fields.image.fields.file.details.image.height
+                      }
+                      alt="founder image"
+                      priority={true}
+                      layout="responsive"
+                    />
+                  </figure>
+                )}
               </div>
             );
           })}
