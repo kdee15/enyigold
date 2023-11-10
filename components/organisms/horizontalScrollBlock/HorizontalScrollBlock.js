@@ -43,8 +43,6 @@ function HorizontalScrollBlock(props) {
 
   const { title, introText, backgroundImage, cardList } = props;
 
-  console.log("props", props);
-
   return (
     <section
       className={`${classes.scrollSectionOuter} ${classes.oHorizontalScroll} scroll-section-outer`}

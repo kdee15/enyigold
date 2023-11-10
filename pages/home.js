@@ -6,6 +6,8 @@ import CopyOneColumn from "../components/organisms/copyOneColumn/CopyOneColumn";
 import HeroBanner from "../components/organisms/heroBanner/HeroBanner";
 import ComponentDrinks from "../components/blocks/componentDrinks/ComponentDrinks";
 import HorizontalScrollBlock from "../components/organisms/horizontalScrollBlock/HorizontalScrollBlock";
+import Footer from "../components/organisms/footer/Footer";
+import TwoColumnMediaText from "../components/organisms/twoColumnMediaText/TwoColumnMediaText";
 const { C_SPACE_ID, C_DELIVERY_KEY } = require("../helpers/contentful-config");
 
 export async function getStaticProps(context) {
@@ -22,21 +24,28 @@ export async function getStaticProps(context) {
 
     .then((entries) => entries.items);
 
+  const resFooter = await client.getEntries({
+    content_type: "componentFooter",
+    include: 10,
+  });
+
   return {
     props: {
       Page: resPage,
+      PageFooter: resFooter.items[0].fields,
     },
     revalidate: 1,
   };
 }
 
-export default function Home({ Page }) {
+export default function Home({ Page, PageFooter }) {
   const mainMenu = Page[0].fields.components[0].fields;
   const heroBanner = Page[0].fields.components[1].fields;
   const aboutCopy = Page[0].fields.components[2].fields;
   const flavourCopy = Page[0].fields.components[3].fields;
-  const founders = Page[0].fields.components[4].fields;
-  const drinksBlock = Page[0].fields.components[5].fields;
+  const awardsBlock = Page[0].fields.components[4].fields;
+  const founders = Page[0].fields.components[5].fields;
+  const drinksBlock = Page[0].fields.components[6].fields;
 
   useEffect(() => {
     (async () => {
@@ -51,8 +60,10 @@ export default function Home({ Page }) {
       <HeroBanner {...heroBanner} />
       <CopyOneColumn {...aboutCopy} />
       <CopyOneColumn {...flavourCopy} />
+      <TwoColumnMediaText contentModule={awardsBlock} />
       <HorizontalScrollBlock {...founders} />
       <ComponentDrinks contentModule={drinksBlock} />
+      <Footer contentModule={PageFooter} />
     </div>
   );
 }

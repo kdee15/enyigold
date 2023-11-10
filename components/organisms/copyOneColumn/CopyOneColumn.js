@@ -6,7 +6,16 @@ import classes from "./CopyOneColumn.module.scss";
 
 export default function CopyOneColumn(props) {
   gsap.registerPlugin(ScrollTrigger);
-  const { title, copy, image, backgroundColor, customClass } = props;
+  const {
+    title,
+    copy,
+    image,
+    backgroundColor,
+    backgroundColorEnd,
+    transparencyStart,
+    transparency,
+    customClass,
+  } = props;
   const phrases = [`${title}`];
   const bodyCopy = useRef(null);
   const divTrim = useRef(null);
@@ -51,8 +60,8 @@ export default function CopyOneColumn(props) {
         start: "0px bottom",
         end: "bottom+=500px bottom",
       },
-      opacity: 0.8,
-      backgroundColor: backgroundColor,
+      opacity: transparency,
+      backgroundColor: backgroundColorEnd,
     });
   }, []);
 
@@ -75,7 +84,10 @@ export default function CopyOneColumn(props) {
           </div>
         </div>
       </div>
-      <div className={`${classes.aBackgroundColor}`} ref={divTrim}></div>
+      <div
+        className={`${classes.aBackgroundColor} aBackgroundColor`}
+        ref={divTrim}
+      ></div>
       {image ? (
         <figure
           className={`${classes.aBackgroundImage}`}
@@ -84,6 +96,13 @@ export default function CopyOneColumn(props) {
           }}
         ></figure>
       ) : null}
+
+      <style global jsx>{`
+        .aBackgroundColor {
+          background-color: ${backgroundColor};
+          transparency: ${transparencyStart};
+        }
+      `}</style>
     </section>
   );
 }
