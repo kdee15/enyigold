@@ -47,8 +47,6 @@ export default function Home({ Page, PageFooter }) {
   const founders = Page[0].fields.components[5].fields;
   const drinksBlock = Page[0].fields.components[6].fields;
 
-  console.log("PageFooter", PageFooter);
-
   useEffect(() => {
     (async () => {
       const LocomotiveScroll = (await import("locomotive-scroll")).default;
