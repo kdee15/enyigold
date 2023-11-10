@@ -44,7 +44,7 @@ function ComponentDrinks(contentModule) {
   const { title, recipes } = contentModule.contentModule;
   return (
     <div className={`${classes.oDrinksBlock}`}>
-      <h2>{title}</h2>
+      <h2 className={`${classes.aBlockTitle}`}>{title}</h2>
       <div className={`${classes.oContainer} container`}>
         {recipes.map((recipe, index) => (
           <div
