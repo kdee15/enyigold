@@ -23,6 +23,7 @@ function TwoColumnMediaText({ contentModule }) {
           trigger: project,
           start: "top bottom",
           toggleActions: "restart none none reset",
+          scrub: true,
         },
       });
       tl.to(
@@ -38,7 +39,8 @@ function TwoColumnMediaText({ contentModule }) {
     });
   }, []);
   // SCROLL EFFECTS END
-  const { title, copy, image, mediaOnLeft, customClass } = contentModule;
+  const { title, copy, image, imageSize, mediaOnLeft, customClass } =
+    contentModule;
 
   return (
     <section
@@ -51,8 +53,12 @@ function TwoColumnMediaText({ contentModule }) {
           }`}
         >
           <div className={`${classes.oColText} col-12 col-md-6`}>
-            <h2 className={`${classes.aBlockTitle} fntH2`}>{title}</h2>
-            <div>{documentToReactComponents(copy)}</div>
+            <div className={classes.wrapper}>
+              <h2 className={`${classes.aBlockTitle} fntH2`}>{title}</h2>
+              <div className={`${classes.mCopy}`}>
+                {documentToReactComponents(copy)}
+              </div>
+            </div>
           </div>
           <div
             className={`${classes.oColImage} col-12 col-md-6`}
@@ -62,6 +68,7 @@ function TwoColumnMediaText({ contentModule }) {
               className={`${classes.mImage} scrollImage`}
               style={{
                 backgroundImage: `url(http:${image.fields.file.url})`,
+                backgroundSize: `${imageSize == "fit" ? "contain" : "cover"}`,
               }}
             ></figure>
           </div>
