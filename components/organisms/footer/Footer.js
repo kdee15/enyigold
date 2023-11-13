@@ -1,10 +1,11 @@
 import Image from "next/dist/client/image";
+import Link from "next/dist/client/link";
 import classes from "./Footer.module.scss";
 
 export default function Footer(contentModule) {
   const { title, logo, menues } = contentModule.contentModule;
   const socialMenu = menues[0].fields.menuLinks;
-  console.log("theFoot", contentModule);
+  const menuFields = menues[0].fields;
   return (
     <section className={classes.oFooter}>
       <div className={`${classes.oContainer} container`}>
@@ -22,18 +23,34 @@ export default function Footer(contentModule) {
               />
             </figure>
           </div>
-          <div className={`${classes.oColImage} col-12 col-md-6`}>
-            <ul className={`${classes.oMenu}`}>
+          <div className={`${classes.oColDetails} col-12 col-md-6`}>
+            <h4 className={classes.aTitle}>{menuFields.title}</h4>
+            <ul
+              className={`${classes.oMenu} ${classes[menuFields.customClass]}`}
+            >
               {socialMenu.map((item, index) => (
-                <li key={index}>
-                  <figure className={`${classes.mImage}`}>
-                    <Image
-                      src={item.fields.image.fields.file.url}
-                      alt="Enyi Logo"
-                      priority={true}
-                      layout="fill"
-                    />
-                  </figure>
+                <li key={index} className={classes.mListItem}>
+                  <Link href={item.fields.url}>
+                    <a
+                      className={classes.aLink}
+                      target={`${
+                        item.fields.isExternal ? "_blank" : "_parent"
+                      }`}
+                    >
+                      {item.fields.image ? (
+                        <figure className={`${classes.mImage}`}>
+                          <Image
+                            src={item.fields.image.fields.file.url}
+                            alt="Enyi Logo"
+                            priority={true}
+                            layout="fill"
+                          />
+                        </figure>
+                      ) : (
+                        <span>{item.fields.label}</span>
+                      )}
+                    </a>
+                  </Link>
                 </li>
               ))}
             </ul>
