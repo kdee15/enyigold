@@ -91,7 +91,7 @@ function HorizontalScrollBlock(props) {
                 ) : (
                   <figure className={`${classes.mImageDesk}`}>
                     <Image
-                      src={`https:${card.fields.image.fields.file.url}`}
+                      src={`${card.fields.image.fields.file.url}`}
                       width={card.fields.image.fields.file.details.image.width}
                       height={
                         card.fields.image.fields.file.details.image.height

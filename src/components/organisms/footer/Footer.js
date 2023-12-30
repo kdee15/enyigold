@@ -38,7 +38,7 @@ export default function Footer(contentModule) {
                     {item.fields.image ? (
                       <figure className={`${classes.mImage}`}>
                         <Image
-                          src={`https:${item.fields.image.fields.file.url}`}
+                          src={`${item.fields.image.fields.file.url}`}
                           alt="Enyi Logo"
                           priority={true}
                           layout="fill"

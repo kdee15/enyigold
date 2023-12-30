@@ -40,7 +40,7 @@ export default function HeroBanner(props) {
     <div className={classes.homeHeader}>
       <div className={classes.backgroundImage} ref={background}>
         <Image
-          src={`https:${carouselImages[1].fields.image.fields.file.url}`}
+          src={`${carouselImages[1].fields.image.fields.file.url}`}
           fill="true"
           layout="fill"
           alt="background image"
@@ -63,7 +63,7 @@ export default function HeroBanner(props) {
           className={classes.logoImage}
         >
           <Image
-            src={`https:${logo.fields.file.url}`}
+            src={`${logo.fields.file.url}`}
             alt="intro image"
             layout="fill"
             fill="true"

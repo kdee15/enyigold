@@ -65,7 +65,7 @@ function ComponentDrinks(contentModule) {
             <div className={`${classes.oColImage} col-12 col-md-6`}>
               <figure className={`${classes.mImage}`}>
                 <Image
-                  src={`https:${recipe.fields.images[0].fields.file.url}`}
+                  src={`${recipe.fields.images[0].fields.file.url}`}
                   width={
                     recipe.fields.images[0].fields.file.details.image.width
                   }
