@@ -1,0 +1,86 @@
+// COMPONENT [ TEXT IMAGE BLOCK ] #####################################################################################
+
+@import "../../../scss/.base/_module-index";
+
+.oTextImageBlock {
+  // A. GLOBAL STYLES +++++++++++++++++++++++++++++++++++++
+
+  padding: 0;
+  position: relative;
+
+  .oColImage {
+    position: relative;
+    overflow: hidden;
+    .mImage {
+      background-position: center;
+      background-size: cover;
+      aspect-ratio: 1/1;
+      background-repeat: no-repeat;
+    }
+  }
+
+  .oRow {
+    &.left {
+      .oColImage {
+        order: 1;
+      }
+      .oColText {
+        order: 2;
+      }
+    }
+  }
+
+  .wrapper {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px 15px 50px;
+    .aBlockTitle {
+      margin-bottom: 20px;
+    }
+    .mCopy {
+      p {
+        margin-bottom: 12px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  // A. END +++++++++++++++++++++++++++++++++++++++++++++++
+
+  // B. GRACEFUL DEGRADATION ++++++++++++++++++++++++++++++
+
+  @media ($md-dn) {
+  }
+
+  // B. END +++++++++++++++++++++++++++++++++++++++++++++++
+
+  // C. MIN-WIDTH: 768px ++++++++++++++++++++++++++++++++++
+
+  @media ($md-up) {
+    .wrapper {
+      padding: 50px;
+    }
+  }
+
+  // C. END +++++++++++++++++++++++++++++++++++++++++++++++
+
+  // D. MIN-WIDTH: 992px ++++++++++++++++++++++++++++++++++
+
+  @media ($md-up) {
+  }
+
+  // D. END +++++++++++++++++++++++++++++++++++++++++++++++
+
+  // E. MIN-WIDTH: 1200px +++++++++++++++++++++++++++++++++
+
+  @media ($lg-up) {
+  }
+
+  // E. END +++++++++++++++++++++++++++++++++++++++++++++++
+}
+
+// END OF FILE ########################################################################################################

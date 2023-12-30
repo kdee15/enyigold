@@ -1,0 +1,76 @@
+// MOLECULE [ NAVIGATION ] ############################################################################################
+
+@import "../../../scss/.base/_module-index";
+
+// A. GLOBAL STYLES +++++++++++++++++++++++++++++++++++++
+
+.oFooter {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 80px 0;
+  .oColDetails {
+    .aTitle {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.mImage {
+  max-width: 100px;
+  margin: 20px auto 50px;
+}
+
+.oMenu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  .mImage {
+    position: relative;
+    max-width: 30px;
+    aspect-ratio: 1/1;
+  }
+  &.oInline {
+    .mListItem {
+      display: inline-block;
+      margin-right: 8px;
+      .mImage {
+        margin: 0;
+        padding: 0;
+        width: 50px;
+      }
+    }
+  }
+}
+
+// A. END +++++++++++++++++++++++++++++++++++++++++++++++
+
+// B. GRACEFUL DEGRADATION ++++++++++++++++++++++++++++++
+
+@media ($md-dn) {
+}
+
+// B. END +++++++++++++++++++++++++++++++++++++++++++++++
+
+// C. MIN-WIDTH: 768px ++++++++++++++++++++++++++++++++++
+
+@media ($md-up) {
+}
+
+// C. END +++++++++++++++++++++++++++++++++++++++++++++++
+
+// D. MIN-WIDTH: 992px ++++++++++++++++++++++++++++++++++
+
+@media ($md-up) {
+}
+
+// D. END +++++++++++++++++++++++++++++++++++++++++++++++
+
+// E. MIN-WIDTH: 1200px +++++++++++++++++++++++++++++++++
+
+@media ($lg-up) {
+}
+
+// E. END +++++++++++++++++++++++++++++++++++++++++++++++
+
+// END OF FILE ########################################################################################################
