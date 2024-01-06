@@ -12,16 +12,6 @@ export default function Footer(contentModule) {
         <div className={`${classes.oRow} row`}>
           <div className={`${classes.oColText} col-12 col-md-6`}>
             <h3 className={`${classes.aTitle} fntH3`}>{title}</h3>
-            <figure className={`${classes.mImage}`}>
-              {/* <Image
-                src={logo.fields.file.url}
-                width={logo.fields.file.details.image.width}
-                height={logo.fields.file.details.image.height}
-                alt="Enyi Logo"
-                priority={true}
-                layout="responsive"
-              /> */}
-            </figure>
           </div>
           <div className={`${classes.oColDetails} col-12 col-md-6`}>
             <h4 className={classes.aTitle}>{menuFields.title}</h4>

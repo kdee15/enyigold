@@ -21,7 +21,6 @@
     "react-device-detect": "^2.2.3",
     "react-dom": "^18",
     "react-gtm-module": "^2.0.11",
-    "react-imgix": "^9.8.1",
     "react-player": "^2.14.1",
     "react-scripts": "^5.0.1",
     "react-slick": "^0.29.0",

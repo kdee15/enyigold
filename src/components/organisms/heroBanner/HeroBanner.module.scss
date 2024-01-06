@@ -61,6 +61,7 @@
 .aBlockBackground {
   @include position(absolute, 0);
   z-index: 0;
+  background-size: cover;
 }
 
 .oVideo {

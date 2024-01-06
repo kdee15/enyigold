@@ -8,6 +8,7 @@ import ComponentDrinks from "../components/blocks/componentDrinks/ComponentDrink
 import HorizontalScrollBlock from "../components/organisms/horizontalScrollBlock/HorizontalScrollBlock";
 import Footer from "../components/organisms/footer/Footer";
 import TwoColumnMediaText from "../components/organisms/twoColumnMediaText/TwoColumnMediaText";
+import ContactForm from "../components/organisms/contactForm/ContactForm";
 const { C_SPACE_ID, C_DELIVERY_KEY } = require("../helpers/contentful-config");
 
 export async function getStaticProps(context) {
@@ -46,6 +47,7 @@ export default function Home({ Page, PageFooter }) {
   const awardsBlock = Page[0].fields.components[4].fields;
   const founders = Page[0].fields.components[5].fields;
   const drinksBlock = Page[0].fields.components[6].fields;
+  const contact = Page[0].fields.components[7].fields;
 
   useEffect(() => {
     (async () => {
@@ -63,6 +65,7 @@ export default function Home({ Page, PageFooter }) {
       <TwoColumnMediaText contentModule={awardsBlock} />
       <HorizontalScrollBlock {...founders} />
       <ComponentDrinks contentModule={drinksBlock} />
+      <ContactForm contentModule={contact} />
       <Footer contentModule={PageFooter} />
     </div>
   );
