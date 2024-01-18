@@ -72,7 +72,7 @@ function ComponentDrinks(contentModule) {
                   height={
                     recipe.fields.images[0].fields.file.details.image.height
                   }
-                  layout="responsive"
+                  style={{ objectFit: "scale-down" }}
                   alt="project image"
                   priority={true}
                   className={`${classes.aImage} scrollImage`}

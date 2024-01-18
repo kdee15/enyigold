@@ -29,9 +29,11 @@ export default function Footer(contentModule) {
                       <figure className={`${classes.mImage}`}>
                         <Image
                           src={`${item.fields.image.fields.file.url}`}
+                          width={`${item.fields.image.fields.file.details.image.width}`}
+                          height={`${item.fields.image.fields.file.details.image.height}`}
                           alt="Enyi Logo"
                           priority={true}
-                          layout="fill"
+                          style={{ objectFit: "scale-down" }}
                         />
                       </figure>
                     ) : (

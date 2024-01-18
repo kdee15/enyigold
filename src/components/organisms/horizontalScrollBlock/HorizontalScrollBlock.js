@@ -98,7 +98,7 @@ function HorizontalScrollBlock(props) {
                       }
                       alt="founder image"
                       priority={true}
-                      layout="responsive"
+                      style={{ objectFit: "cover" }}
                     />
                   </figure>
                 )}

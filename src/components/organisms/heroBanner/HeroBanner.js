@@ -65,7 +65,7 @@ export default function HeroBanner(props) {
           <Image
             src={`${logo.fields.file.url}`}
             alt="intro image"
-            layout="fill"
+            style={{ objectFit: "scale-down" }}
             fill="true"
             priority={true}
           />
