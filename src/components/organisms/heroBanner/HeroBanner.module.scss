@@ -32,7 +32,7 @@
   display: flex;
   justify-content: center;
   position: relative;
-  margin-top: 35vh;
+  margin-top: 40vh;
   z-index: 2;
 }
 
@@ -48,9 +48,10 @@
 
 .logoImage {
   filter: brightness(110%);
-  width: 350px;
-  height: 475px;
+  width: 46vw;
+  aspect-ratio: 1/1;
   position: absolute;
+  top: 15px;
 }
 
 .logoImage img {
@@ -83,6 +84,10 @@
 // C. MIN-WIDTH: 768px ++++++++++++++++++++++++++++++++++
 
 @media ($md-up) {
+  .logoImage {
+    width: 17vw;
+    top: 25px;
+  }
 }
 
 // C. END +++++++++++++++++++++++++++++++++++++++++++++++
@@ -97,6 +102,10 @@
 // E. MIN-WIDTH: 1200px +++++++++++++++++++++++++++++++++
 
 @media ($xl-up) {
+  .logoImage {
+    width: 15vw;
+    top: 10px;
+  }
 }
 
 // E. END +++++++++++++++++++++++++++++++++++++++++++++++

@@ -207,7 +207,7 @@ export default function ContactForm(contentModule) {
                       placeholder=""
                     />
                     <span className={`${classes.aLabel}`}>
-                      Are you over 20 years old? &#40; yes or no&#41;
+                      Are you over 20 years old? &#40; type yes or no&#41;
                       <span>*</span>
                     </span>
                   </label>

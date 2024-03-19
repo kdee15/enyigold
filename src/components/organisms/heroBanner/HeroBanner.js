@@ -29,8 +29,8 @@ export default function HeroBanner(props) {
     });
 
     timeline
-      .from(background.current, { clipPath: `inset(15%)` })
-      .to(logoImage.current, { height: "200px" }, 0)
+      .to(background.current, { clipPath: `inset(15%)` })
+      .to(logoImage.current, { width: "100px", y: "50%" }, 0)
       .to(siteTitle.current, { y: "-20%" }, 0);
   }, []);
 
