@@ -58,10 +58,9 @@
       border-radius: 5px;
       z-index: 1;
       background-color: transparent;
-
-      @include font(18);
       &.aTextArea {
         min-height: 70px;
+        margin-bottom: -5px;
       }
       &:placeholder-shown {
         + .aLabel {
@@ -78,6 +77,15 @@
       bottom: -20px;
       padding: 0;
       margin: 0;
+    }
+    &.select {
+      background-color: white;
+      border-radius: 5px;
+      .aInput {
+        @include font(18);
+        background-color: transparent;
+        box-shadow: none;
+      }
     }
   }
 }

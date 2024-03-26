@@ -40,7 +40,7 @@ export default function ContactForm(contentModule) {
       tempErrors["message"] = true;
       isValid = false;
     }
-    if ((consent != "yes") | (consent.length <= 0)) {
+    if (consent != "yes") {
       tempErrors["consent"] = true;
       isValid = false;
     }
@@ -194,27 +194,30 @@ export default function ContactForm(contentModule) {
                   )}
                 </div>
 
-                <div className={`${classes.mInput}`}>
+                <div className={`${classes.mInput} ${classes.select}`}>
                   <label htmlFor="consent" className={`${classes.mLabel}`}>
-                    <input
-                      type="text"
-                      name="consent"
-                      value={consent}
-                      onChange={(e) => {
-                        setConsent(e.target.value);
-                      }}
-                      className={`${classes.aInput} fnt18`}
-                      placeholder=""
-                    />
                     <span className={`${classes.aLabel}`}>
                       Are you over 18 years old? &#40; type yes or no&#41;
                       <span>*</span>
                     </span>
                   </label>
+                  <select
+                    className={`${classes.aInput} fnt18`}
+                    name="consent"
+                    id="consent"
+                    onChange={(e) => {
+                      setConsent(e.target.value);
+                    }}
+                  >
+                    <option value="" selected>
+                      Select Yes or No
+                    </option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select>
                   {errors?.consent && (
                     <p className={`${classes.aError} fnt12`}>
-                      Consent cannot be empty. You may not proceed if you are
-                      under age.
+                      You may not proceed if you are under age.
                     </p>
                   )}
                 </div>
